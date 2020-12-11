@@ -5,6 +5,8 @@ import 'components/CustomContainer.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final String code = "Top secret code";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,7 +38,7 @@ class Level2 extends StatelessWidget {
 class Level3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) => CustomContainer(
-        child: Text("Grab the data here"),
+        child: Text("Grab the data here without 'prop drilling' through the previous levels"),
         color: Colors.red,
       );
 }
