@@ -59,11 +59,7 @@ class Level3 extends StatelessWidget {
               },
             );
           }),
-          Consumer<SecretData>(
-            builder: (context, data, child) {
-              return Text(data.data);
-            },
-          ),
+          Text(Provider.of<SecretData>(context, listen: false).data),
         ],
       ),
     );
