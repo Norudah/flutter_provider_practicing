@@ -12,12 +12,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Testing provider"),
+    return ChangeNotifierProvider(
+      create: (context) => SecretData(),
+      child: MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            title: Consumer<SecretData>(
+              builder: (context, secretData, child) {
+                return Text(secretData.data);
+              },
+            ),
+          ),
+          body: Level1(),
         ),
-        body: Level1(),
       ),
     );
   }
@@ -41,15 +48,17 @@ class Level2 extends StatelessWidget {
 class Level3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => SecretData(),
-      child: CustomContainer(
-        color: Colors.red,
-        child: Consumer<SecretData>(
-          builder: (context, data, child) {
-            return Text(data.data);
-          },
-        ),
+    return CustomContainer(
+      color: Colors.red,
+      child: Column(
+        children: [
+          TextField(),
+          Consumer<SecretData>(
+            builder: (context, data, child) {
+              return Text(data.data);
+            },
+          ),
+        ],
       ),
     );
   }
