@@ -52,7 +52,13 @@ class Level3 extends StatelessWidget {
       color: Colors.red,
       child: Column(
         children: [
-          TextField(),
+          Consumer<SecretData>(builder: (context, ultraSecretDataOfDoom, child) {
+            return TextField(
+              onChanged: (value) {
+                ultraSecretDataOfDoom.changeData(value);
+              },
+            );
+          }),
           Consumer<SecretData>(
             builder: (context, data, child) {
               return Text(data.data);
